@@ -1,49 +1,38 @@
-Mixamo select
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>BabylonJS Viewer - Animation Support</title>
-    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        .viewerContainer { width: 100%; height: 600px; margin-top: 20px; border: 1px solid #ccc; }
-    </style>
-    <script>
-        function loadit(modelUrl) {
-            if(modelUrl) {
-                let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-                
-                // 載入模型並處理動畫
-                viewer.loadModel(modelUrl).then((model) => {
-                    // 1. 強制攝影機對焦與允許旋轉
-                    viewer.sceneManager.scene.createDefaultCameraOrLight(true, true, true);
-                    
-                    // 2. 播放所有動畫組
-                    if (viewer.sceneManager.scene.animationGroups.length > 0) {
-                        viewer.sceneManager.scene.animationGroups.forEach(group => {
-                            group.play(true); // true 代表循環播放
-                        });
-                        console.log("動畫已開始播放");
-                    } else {
-                        console.log("此模型中沒有偵測到動畫組");
-                    }
-                });
-            }
-        }
-    </script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>BabylonJS Viewer - Basic usage</title>
+        <style>
+			.viewerContainer {
+                width: 400px;
+                height: 500px;				
+				image-rendering: pixelated; /* to prevent blury when zoomed out */
+			}
+
+        </style>
+		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+	<script>
+		function loadit(modelUrl) {
+			if(modelUrl) {
+				let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
+				viewer.loadModel(modelUrl)
+			}
+		}
+	</script>
 </head>
 <body>
-    <h3>模型展示（含動畫自動播放）：</h3>
-    <select onchange="loadit(this.value)">
-        <option value="">-- 請選擇模型 --</option>
-        <option value="./mixamo_hw_1.glb">Emma</option>
-        <option value="./mixamo_hw_2.glb">Anna</option>
-    </select>
-
-    <div class='viewerContainer'>
-        <babylon id="viewerID" extends="minimal" model-autoplay="true"></babylon>
-    </div>
+<select onchange="loadit(this.value)">
+	<option value="">select model</option>
+	<option value="./models/alice.glb">Alice</option>
+	<option value="./models/Astronaut.glb">Astronaut</option>
+	<option value="./models/stacy_lightweight.glb">Stacy</option>
+</select>
+<div class='viewerContainer'>
+	<babylon id="viewerID"></babylon>
+</div>
 </body>
+
 </html>
