@@ -5,14 +5,14 @@ miaxmo
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BabylonJS Viewer - Mixamo Model</title>
+    <title>BabylonJS Viewer - My Model</title>
     <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
     <style>
-        body { margin: 0; }
-        /* 設定顯示區域的大小 */
+        body { margin: 0; background-color: #f0f0f0; }
+        /* 確保模型填滿整個網頁視窗 */
         babylon {
             width: 100%;
-            height: 100vh; /* 佔滿整個畫面高度 */
+            height: 100vh;
             display: block;
         }
     </style>
@@ -20,7 +20,7 @@ miaxmo
 <body>
 
     <babylon 
-        model="./models/mixamo%20hw%20.glb" 
+        model="./models/mixamo_hw.glb" 
         templates.main.params.fill-container="true"
         extends="minimal">
     </babylon>
